@@ -1,12 +1,16 @@
 version: "3"
 
 services:
-  #   go:
-  #     image: golang:1.6.1-alpine
-  #     volumes:
-  #       - .:/go/src/rhuangabrielsantos/go-restapi
-  #     working_dir: /go/src/rhuangabrielsantos/go-restapi
-  #     command: go run main.go
+  go:
+    image: golang:1.13-alpine
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/go/src/rhuangabrielsantos/go-restapi
+    working_dir: /go/src/rhuangabrielsantos/go-restapi
+    command: go run main.go
+    links:
+      - mongodb
 
   mongodb:
     image: mongo
